@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Data Display</title>
+</head>
+<body>
+  <div id="json-data"></div>
+
+  <script>
+    const jsonDataUrl = "https://github.com/SoharabUddin/Websites/blob/8324f7f3c8ad22f4e466b070f5f2d251b0507014/google-contacts_2023-07-20T16-50-19.json";
+    fetch(jsonDataUrl)
+      .then((response) => response.json())
+      .then((data) => displayJsonData(data))
+      .catch((error) => console.error("Error fetching JSON:", error));
+
+    function displayJsonData(data) {
+      let htmlOutput = "<h1>JSON File Data</h1>";
+      for (let key in data) {
+        htmlOutput += "<p><strong>" + key + ":</strong> " + data[key] + "</p>";
+      }
+      document.getElementById("json-data").innerHTML = htmlOutput;
+    }
+  </script>
+</body>
+</html>
